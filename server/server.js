@@ -8,6 +8,7 @@ const app = express();
 
 // Define Middleware Methods
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // -- Setup basic logger
 app.use((req, res, next) => {
