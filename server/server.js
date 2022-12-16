@@ -1,8 +1,10 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const routes = require('./routes');
+const db = require('./config/connection');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
-
 
 const app = express();
 
@@ -21,6 +23,12 @@ app.use((req, res, next) => {
 app.use(routes);
 
 
-app.listen(PORT, () => {
-    console.log(`Server listening on PORT: ${PORT}`);
-});
+
+db.once('open', () => {
+    console.log('Database connected');
+    app.listen(PORT, () => {
+        console.log(`Server listening on PORT: ${PORT}`);
+    });
+}) 
+
+
