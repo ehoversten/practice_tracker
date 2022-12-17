@@ -1,7 +1,7 @@
-const mongoose =- require('mongoose');
+const { Schema, model } = require('mongoose');
 
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 const practiceSchema = new Schema({
     title: {
@@ -20,4 +20,4 @@ const practiceSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Practice', practiceSchema);
+module.exports = model('Practice', practiceSchema);
