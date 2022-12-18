@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import SessionDetail from '../components/SessionDetail';
+import SessionForm from '../components/SessionForm';
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
     return (
         <div className='home-page'>
             <h1>Home Component</h1>
+            <SessionForm />
             <div className="sessions">
                 {sessions && sessions.map((session) => (
                     <SessionDetail key={session._id} session={session} />

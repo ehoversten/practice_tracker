@@ -49,7 +49,7 @@ router.get('/:id', async (req, res) => {
 // router.post('/', createSession);
 router.post('/', async (req, res) => {
     const {title, duration, worked_on } = req.body;
-    // console.log(title, duration, worked_on);
+    console.log(title, duration, worked_on);
 
     try {
         const session = await Practice.create({title, duration, worked_on});
