@@ -1,8 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-
-// const Schema = mongoose.Schema;
-
 const practiceSchema = new Schema({
     title: {
         type: String,
