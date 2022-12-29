@@ -20,7 +20,7 @@ const userSchema = new Schema({
 
 
 // Setup Presave Middleware Method to hash Password
-userSchema.pre('save', async (next) => {
+userSchema.pre('save', async function (next) {
     // const {username, email, password } = req;
 
     console.log("IN - User presave method")
@@ -31,29 +31,43 @@ userSchema.pre('save', async (next) => {
     // if(exists) {
     //     throw Error("Email already in use");
     // }
+    console.log("hashing password");
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt)
 
-    if (this.isNew) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.password, saltRounds);
-    }
-
+    const user = await this.create({username, email, password: hash})
     next();
 })
 
 // Static Method - Signup Variation to Pre Hook
-// userSchema.statics.signup = async (username, email, password) => {
-//     const exists = await this.findOne({email})
+userSchema.statics.signup = async (username, email, password) => {
+    const exists = await this.findOne({email})
 
-//     if(exists) {
-//         throw Error("Email already in use");
-//     }
+    if(exists) {
+        throw Error("Email already in use");
+    }
 
-//     const salt = await bcrypt.genSalt(10);
-//     const hash = await bcrypt.hash(password, salt)
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt)
 
-//     const user = await this.create({username, email, password: hash})
-//     return user;
-// }
+    const user = await this.create({username, email, password: hash})
+    return user;
+}
+
+// Static Method - Signup Variation to Pre Hook
+userSchema.methods.signup = async (username, email, password) => {
+    const exists = await this.findOne({email})
+
+    if(exists) {
+        throw Error("Email already in use");
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt)
+
+    const user = await this.create({username, email, password: hash})
+    return user;
+}
 
 module.exports = model('User', userSchema);
 

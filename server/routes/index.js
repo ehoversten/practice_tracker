@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
     console.log(username, email, password);
 
     try {
-        let newUser = await User.create(req.body);
+        let newUser = await User.signup(username, email, password);
 
         console.log("New user created");
         // res.status(201).json(newUser);
@@ -26,8 +26,6 @@ router.post('/register', async (req, res) => {
         // throw Error(err);
         res.status(400).json({ error: err.message });
     }
-
-    
 });
 
 router.get('/', (req, res) => {
