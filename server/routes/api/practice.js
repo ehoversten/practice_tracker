@@ -7,6 +7,7 @@ const {
     updateSession, 
     deleteSession
 } = require('../../controllers/practiceController');
+
 const router = require('express').Router();
 
 // -- All routes prefixed with '/api/practice'

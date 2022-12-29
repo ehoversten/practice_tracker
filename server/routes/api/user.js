@@ -1,9 +1,19 @@
 const router = require('express').Router();
-
+const { User } = require('../../models');
 
 // -- All routes prefixed with '/api/user'
-router.get('/', (req, res) => {
-    res.send("User GET Route");
+router.get('/', async (req, res) => {
+
+    try {
+        let allUsers = await User.find();
+        console.log(allUsers);
+
+        res.status(200).json(allUsers);
+    } catch(err) {
+        res.status(400).json({error: err.message})
+    }
+
+    // res.send("User GET Route");
 });
 
 // -- GET ONE
@@ -13,8 +23,22 @@ router.get('/:id', (req, res) => {
 });
 
 // -- CREATE 
-router.post('/', (req, res) => {
-    res.send("User POST Route");
+router.post('/', async (req, res) => {
+    console.log(req.body);
+
+    const { username, email, password } = req.body;
+    console.log(username, email, password);
+
+    try {
+        let newUser = await User.create(req.body);
+
+        console.log("New user created");
+        res.status(201).json(newUser);
+        // res.status(201).json({email, newUser});
+    } catch (err) {
+        // throw Error(err);
+        res.status(400).json({ error: err.message });
+    }
 });
 
 // -- UPDATE
