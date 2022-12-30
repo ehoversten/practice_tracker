@@ -24,10 +24,10 @@ router.get('/:id', (req, res) => {
 
 // -- CREATE 
 router.post('/', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
 
     const { username, email, password } = req.body;
-    console.log(username, email, password);
+    // console.log(username, email, password);
 
     try {
         let newUser = await User.create(req.body);

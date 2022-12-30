@@ -8,11 +8,13 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        minLength: 8
     }
 }, {
     timestamps: true
@@ -23,21 +25,21 @@ const userSchema = new Schema({
 userSchema.pre('save', async function (next) {
     // const {username, email, password } = req;
 
-    console.log("IN - User presave method")
-    // console.log(username, email, password);
+    // console.log(this);  // user instance 
+    // console.log("IN - User presave method")
 
-    // const exists = await this.findOne(this.email)
-
-    // if(exists) {
-    //     throw Error("Email already in use");
-    // }
     console.log("hashing password");
     const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({username, email, password: hash})
+    this.password = await bcrypt.hash(this.password, salt)
+
     next();
-})
+});
+
+userSchema.post('save', function(doc, next) {
+    console.log("new user created and saved", doc);
+    next();
+});
 
 // Static Method - Signup Variation to Pre Hook
 userSchema.statics.signup = async (username, email, password) => {
