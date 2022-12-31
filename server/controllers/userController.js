@@ -13,9 +13,17 @@ const getAllUsers = async (req, res) => {
     }
 }
 
-const getSingleUser = (req, res) => {
+const getSingleUser = async (req, res) => {
     console.log(`ID: ${req.params.id}`);
-    res.send("User GET ONE Route");
+
+    try {
+        let user = await User.findById(req.params.id);
+        console.log(user);
+        
+        res.status(200).json(user);
+    } catch(err) {
+        res.status(400).json({ error: err.message });
+    }
 }
 
 const createUser = async (req, res) => {
@@ -34,14 +42,28 @@ const createUser = async (req, res) => {
     }
 }
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
     console.log(`ID: ${req.params.id}`);
-    res.send("User PUT Route");
+    try {
+        let user = await User.findByIdAndUpdate(req.params.id);
+        console.log(user);
+        
+        res.status(200).json(user);
+    } catch(err) {
+        res.status(400).json({ error: err.message });
+    }
 }
 
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
     console.log(`ID: ${req.params.id}`);
-    res.send("User DELETE Route");
+    try {
+        let user = await User.findByIdAndDelete(req.params.id);
+        // console.log(user);
+        
+        res.status(200).json(user);
+    } catch(err) {
+        res.status(400).json({ error: err.message });
+    }
 }
 
 

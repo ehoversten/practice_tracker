@@ -8,7 +8,22 @@ const createToken = (_id) => {
 
 // login user
 const login = async (req, res) => {
-    res.json({ msg: 'login user'});
+    // console.log(req.body);
+
+    const { email, password } = req.body;
+    // console.log(email, password)
+    try {
+        let user = await User.findOne({ email: email });
+        // console.log(user);
+        const token = createToken(user._id);
+
+        res.status(200).json({ email, token });
+        // res.status(200).json(token);
+    } catch(err) {
+        res.status(400).json({ error: err.message });
+    }
+
+    // res.json({ msg: 'login user'});
 }
 
 // register user
