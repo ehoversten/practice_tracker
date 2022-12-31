@@ -17,7 +17,7 @@ const getAllSessions = async (req, res) => {
 
 // get a single practice session
 const getSingleSession = async (req, res) => {
-    console.log(`ID: ${req.params.id}`);
+    // console.log(`ID: ${req.params.id}`);
     const { id } = req.params;
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
@@ -51,7 +51,7 @@ const createSession = async (req, res) => {
 }
 // update a practice session
 const updateSession = async (req, res) => {
-    console.log(`ID: ${req.params.id}`);
+    // console.log(`ID: ${req.params.id}`);
     const { id } = req.params;
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
@@ -73,7 +73,7 @@ const updateSession = async (req, res) => {
 
 // delete a practice session
 const deleteSession = async (req, res) => {
-    console.log(`ID: ${req.params.id}`);
+    // console.log(`ID: ${req.params.id}`);
     const { id } = req.params;
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
