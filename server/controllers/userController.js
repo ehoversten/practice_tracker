@@ -5,7 +5,6 @@ const User = require('../models/User');
 const getAllUsers = async (req, res) => {
     try {
         let allUsers = await User.find();
-        // console.log(allUsers);
 
         res.status(200).json(allUsers);
     } catch(err) {
@@ -14,7 +13,7 @@ const getAllUsers = async (req, res) => {
 }
 
 const getSingleUser = async (req, res) => {
-    console.log(`ID: ${req.params.id}`);
+    // console.log(`ID: ${req.params.id}`);
 
     try {
         let user = await User.findById(req.params.id);
@@ -28,22 +27,19 @@ const getSingleUser = async (req, res) => {
 
 const createUser = async (req, res) => {
     const { username, email, password } = req.body;
-    // console.log(username, email, password);
 
     try {
         // Create New User
         let newUser = await User.create(req.body);
-        // console.log("New user created");
 
         res.status(201).json(newUser);
     } catch (err) {
-        // throw Error(err);
         res.status(400).json({ error: err.message });
     }
 }
 
 const updateUser = async (req, res) => {
-    console.log(`ID: ${req.params.id}`);
+    // console.log(`ID: ${req.params.id}`);
     try {
         let user = await User.findByIdAndUpdate(req.params.id);
         console.log(user);
@@ -55,17 +51,15 @@ const updateUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-    console.log(`ID: ${req.params.id}`);
+    // console.log(`ID: ${req.params.id}`);
     try {
         let user = await User.findByIdAndDelete(req.params.id);
-        // console.log(user);
         
         res.status(200).json(user);
     } catch(err) {
         res.status(400).json({ error: err.message });
     }
 }
-
 
 module.exports = { 
     getAllUsers, 

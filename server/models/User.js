@@ -23,10 +23,7 @@ const userSchema = new Schema({
 
 // Setup Presave Middleware Method to hash Password
 userSchema.pre('save', async function (next) {
-    // const {username, email, password } = req;
-
     // console.log(this);  // user instance 
-    // console.log("IN - User presave method")
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt)
 
@@ -38,20 +35,6 @@ userSchema.post('save', function(doc, next) {
     next();
 });
 
-// Static Method - Signup Variation to Pre Hook
-userSchema.statics.signup = async (username, email, password) => {
-    const exists = await this.findOne({email})
-
-    if(exists) {
-        throw Error("Email already in use");
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt)
-
-    const user = await this.create({username, email, password: hash})
-    return user;
-}
 
 // Static Method - Signup Variation to Pre Hook
 userSchema.methods.signup = async (username, email, password) => {
