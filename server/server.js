@@ -5,7 +5,7 @@ const db = require('./config/connection');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
-
+// -- Create Express Instance
 const app = express();
 
 // Define Middleware Methods
@@ -18,11 +18,8 @@ app.use((req, res, next) => {
     next();
 });
 
-
 // -- Routes
 app.use(routes);
-
-
 
 db.once('open', () => {
     console.log('Database connected');

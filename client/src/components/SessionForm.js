@@ -30,12 +30,12 @@ const SessionForm = () => {
             setError(json.error);
         }
         console.log("New Session Added");
+        // reset form inputs 
         setTitle('');
         setDuration('');
         setWorkedOn('');
         setError(null);
 
-        // reset form inputs 
 
     }
 

@@ -3,20 +3,18 @@ import { createContext, useState } from "react";
 
 export const SessionContext = createContext();
 
-
-
 export const SessionContextProvider = ({children}) => {
 
-    const currentUser = {
-        username: '',
-        email: '',
-        // password: ''
+    const currentSession = {
+        title: '',
+        duration: '',
+        worked_on: ''
     }
 
-    const [user, setUser] = useState({});
+    const [session, setSession] = useState(currentSession);
 
     return (
-        <SessionContext.Provider value={user}>
+        <SessionContext.Provider value={session}>
             {children}
         </SessionContext.Provider>
     )
