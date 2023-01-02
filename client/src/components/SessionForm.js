@@ -1,12 +1,10 @@
 import { useState } from 'react';
 
-
 const SessionForm = () => {
     const [title, setTitle] = useState('');
     const [duration, setDuration] = useState('');
     const [workedOn, setWorkedOn] = useState('');
     const [error, setError] = useState(null);
-
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
@@ -35,8 +33,6 @@ const SessionForm = () => {
         setDuration('');
         setWorkedOn('');
         setError(null);
-
-
     }
 
     const handleChange = (evt) => {
@@ -71,7 +67,5 @@ const SessionForm = () => {
         </div>
     )
 }
-
-
 
 export default SessionForm;

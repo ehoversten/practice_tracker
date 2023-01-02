@@ -1,5 +1,4 @@
-import React, { isValidElement, useState } from "react";
-
+import React, { useState } from "react";
 
 const Login = () => {
 
@@ -62,4 +61,4 @@ const Login = () => {
     )
 }
 
-module.exports = Login;
+export default Login;
