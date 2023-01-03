@@ -20,7 +20,7 @@ const login = async (req, res) => {
         res.status(400).json({ error: err.message });
     }
 }
-
+ 
 // register user
 const register = async (req, res) => {
     const { username, email, password } = req.body;

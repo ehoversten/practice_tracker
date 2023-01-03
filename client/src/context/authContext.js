@@ -1,6 +1,10 @@
 import { createContext, useState, useReducer } from 'react';
 
 export const AuthContext = createContext();
+// export const AuthContext = createContext({
+//     user: null,
+//     setUser: () => null
+// });
 
 export const authReducer = (state, action) => {
     switch(action.type) {
@@ -29,7 +33,7 @@ export const AuthContextProvider = ({children}) => {
     // console.log('Auth Context State: ', state);
 
     return (
-        <AuthContext.Provider value={user}>
+        <AuthContext.Provider value={{user, setUser}}>
         {/* <AuthContext.Provider value={{...state, dispatch}}> */}
             {children}
         </AuthContext.Provider>

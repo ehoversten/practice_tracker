@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SessionDetail from '../components/SessionDetail';
 import SessionForm from '../components/SessionForm';
+import SessionList from '../pages/SessionList';
 
 
 const Home = () => {
@@ -34,6 +35,7 @@ const Home = () => {
                     <SessionDetail key={session._id} session={session} />
                 ))}
             </div>
+            <SessionList />
         </div>
     )
 }

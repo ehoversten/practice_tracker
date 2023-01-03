@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const SessionForm = () => {
+    // --> look into using Ref's for form input values
     const [title, setTitle] = useState('');
     const [duration, setDuration] = useState('');
     const [workedOn, setWorkedOn] = useState('');

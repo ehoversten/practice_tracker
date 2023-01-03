@@ -14,18 +14,19 @@ const Login = () => {
         evt.preventDefault();
 
         const newUser = {email, password} 
-        console.log(newUser);
+        console.log("New User - ", newUser);
 
         // Make request to server
         let response = await fetch('/login', {
             method: 'POST',
-            body: JOSN.stringify(newUser),
+            body: JSON.stringify(newUser),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         // Convert Response Data to JSON
         let json = await response.json();
+        console.log("JSON - ", json);
 
         if(!response.ok) {
             setError(json.error);
@@ -42,20 +43,21 @@ const Login = () => {
             <h1>Welcome, Login</h1>
             <form action="">
                 <label htmlFor="email">Enter Email</label>
-                <input type="text"
+                <input type="email"
                     id="email"
                     name="email"
                     value={email}
                     onChange={(evt) => setEmail(evt.target.value)}
                 />
                 <label htmlFor="pass">Enter Password</label>
-                <input type="text"
+                <input type="password"
                     id="pass"
                     name="pass"
                     value={password}
                     onChange={(evt) => setPassword(evt.target.value)}
                 />
                 <button onClick={handleSubmit}>Submit</button>
+                {error && <div className="error">{error}</div>}
             </form>
         </div>
     )

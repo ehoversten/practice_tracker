@@ -8,6 +8,8 @@ const Navbar = () => {
             <nav>
                 <h2>Practice Session Tracker</h2>
                 <NavLink to='/'>Home</NavLink>
+                <NavLink to='/register'>Register</NavLink>
+                <NavLink to='/login'>Login</NavLink>
                 <NavLink to='about'>About</NavLink>
             </nav>
         </header>
