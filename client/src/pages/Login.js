@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useLogin } from '../hooks/useLogin';
+import { AuthContext } from "../context/authContext";
 
 const Login = () => {
 
@@ -6,15 +8,19 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
+    const { setUser } = useContext(AuthContext);
+    // const { login, isLoading, error } = useLogin();
+
     const handleChange = (evt) => {
         console.log(evt.target.value);
     }
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
+        // await login();
 
         const newUser = {email, password} 
-        console.log("New User - ", newUser);
+        console.log("CUrrent User - ", newUser);
 
         // Make request to server
         let response = await fetch('/login', {
@@ -24,6 +30,7 @@ const Login = () => {
                 'Content-Type': 'application/json'
             }
         });
+
         // Convert Response Data to JSON
         let json = await response.json();
         console.log("JSON - ", json);
@@ -32,10 +39,23 @@ const Login = () => {
             setError(json.error);
         }
 
-        console.log("User Authorized")
-        setEmail('');
-        setPassword('');
-        setError(null)
+        if(response.ok) {
+            // save user to localStorage
+            localStorage.setItem('user', JSON.stringify(json));
+
+            // update Auth Context
+            setUser(json);
+            // dispatch event
+            // dispatchEvent({type: 'LOGIN', payload: json})
+            // update loading state
+            // setIsLoading(false);
+
+            console.log("User Authorized")
+            setEmail('');
+            setPassword('');
+            setError(null)
+        }
+
     }
 
     return (
