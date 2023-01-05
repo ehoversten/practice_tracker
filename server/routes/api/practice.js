@@ -8,7 +8,10 @@ const {
     updateSession, 
     deleteSession
 } = require('../../controllers/practiceController');
-
+// -- Auth Middleware -- // 
+const isAuthorized = require('../../utils/auth');
+// -- Require authorization to query for ALL routes -- //
+// router.use(isAuthorized);
 
 // -- All routes prefixed with '/api/practice'
 router.get('/', getAllSessions);
@@ -24,5 +27,6 @@ router.put('/:id', updateSession);
 
 // -- DELETE
 router.delete('/:id', deleteSession);
+// router.delete('/:id', isAuthorized, deleteSession);
 
 module.exports = router;

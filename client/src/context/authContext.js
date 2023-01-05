@@ -28,12 +28,14 @@ export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState(null);
     // check if we have a user saved to local storage
     useEffect(() => {
+        console.log('Checking Local Storage...');
         const user = JSON.parse(localStorage.getItem('user'));
 
         if(user) {
             setUser(user);
             // dispatch({type: 'LOGIN', payload: currentUser});
         }
+        console.log('Auth Context State: ', user);
     }, []);
 
 
