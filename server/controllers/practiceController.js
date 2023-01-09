@@ -4,11 +4,13 @@ const mongoose = require('mongoose');
 
 // get all practice sessions
 const getAllSessions = async (req, res) => {
+    console.log("Current User: ", req.user);
 
     try {
         const user = await User.findById(req.user.id);
 
         let allSessions = await Practice.find({user}).sort({ createdAt: -1 });
+        console.log(allSessions);
         res.status(200).json(allSessions);
     } catch(err) {
         res.status(400).json({ error: err.message });

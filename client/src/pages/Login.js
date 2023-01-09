@@ -20,7 +20,7 @@ const Login = () => {
         // await login();
 
         const newUser = {email, password} 
-        console.log("CUrrent User - ", newUser);
+        console.log("User Data - ", newUser);
 
         // Make request to server
         let response = await fetch('/login', {
@@ -72,7 +72,7 @@ const Login = () => {
                 <label htmlFor="pass">Enter Password</label>
                 <input type="password"
                     id="pass"
-                    name="pass"
+                    name="password"
                     value={password}
                     onChange={(evt) => setPassword(evt.target.value)}
                 />

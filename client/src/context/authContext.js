@@ -1,10 +1,10 @@
 import { createContext, useState, useReducer, useEffect } from 'react';
 
-export const AuthContext = createContext();
-// export const AuthContext = createContext({
-//     user: null,
-//     setUser: () => null
-// });
+// export const AuthContext = createContext();
+export const AuthContext = createContext({
+    user: null,
+    setUser: () => null
+});
 
 export const authReducer = (state, action) => {
     switch(action.type) {
@@ -35,7 +35,7 @@ export const AuthContextProvider = ({children}) => {
             setUser(user);
             // dispatch({type: 'LOGIN', payload: currentUser});
         }
-        console.log('Auth Context State: ', user);
+        // console.log('Auth Context State: ', user);
     }, []);
 
 
@@ -43,6 +43,7 @@ export const AuthContextProvider = ({children}) => {
     //     user: null
     // })
     // console.log('Auth Context State: ', state);
+    console.log('Auth Context State: ', user);
 
     return (
         <AuthContext.Provider value={{user, setUser}}>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 
-const SessionList = () => {
+const SessionList = ({ me }) => {
     const [sessions, setSessions] = useState([]);
 
     useEffect(() => {
@@ -10,11 +10,12 @@ const SessionList = () => {
     
     const getData = async () => {
         console.log('fetching data');
-        const response = await fetch('https://jsonplaceholder.typicode.com/users/', {
-            // method: 'GET',
-            // headers: {
-            //     'Content-Type': 'application/json'
-            // }
+        const response = await fetch('/api/practice/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${me.token}`
+            }
         })
 
         console.log(response);
@@ -26,9 +27,12 @@ const SessionList = () => {
     return (
         <div className="session-list">
             <h1>Practice Session List</h1>
-            {sessions && sessions.map((user) => (
-                <div key={user.id} className="session-item">
-                    <p>{user.name}</p>
+            {sessions && sessions.map((item) => (
+                <div key={item.id} className="session-item">
+                    <p>{item.title}</p>
+                    <p>{item.duration}</p>
+                    <p>{item.workedOn}</p>
+                    {/* <p>{item.user}</p> */}
                 </div>
             ))}
         </div>

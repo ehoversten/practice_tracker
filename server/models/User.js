@@ -37,7 +37,8 @@ userSchema.post('save', function(doc, next) {
 
 
 // Static Method - Signup Variation to Pre Hook
-userSchema.methods.signup = async (username, email, password) => {
+userSchema.statics.signup = async (username, email, password) => {
+// userSchema.methods.signup = async (username, email, password) => {
     const exists = await this.findOne({email})
 
     if(exists) {

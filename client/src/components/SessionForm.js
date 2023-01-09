@@ -1,11 +1,25 @@
 import { useState } from 'react';
 
-const SessionForm = () => {
+const SessionForm = ({ me }) => {
     // --> look into using Ref's for form input values
     const [title, setTitle] = useState('');
     const [duration, setDuration] = useState('');
     const [workedOn, setWorkedOn] = useState('');
     const [error, setError] = useState(null);
+
+    const [formData, setFormData] = useState({
+        title: '',
+        duration: '',
+        workedOn: '',
+        // worked_on: ''
+    })
+
+    const handleChange = (evt) => {
+        setFormData(prevState => ({
+            ...prevState, 
+            [evt.target.name]: evt.target.value
+        }))
+    }
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
@@ -18,7 +32,8 @@ const SessionForm = () => {
             method: 'POST',
             body: JSON.stringify(newSession),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${me.token}`
             }
         }); 
 
@@ -34,11 +49,6 @@ const SessionForm = () => {
         setDuration('');
         setWorkedOn('');
         setError(null);
-    }
-
-    const handleChange = (evt) => {
-        console.log(evt.target.value);
-
     }
 
     return (

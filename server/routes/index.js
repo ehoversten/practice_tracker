@@ -10,7 +10,6 @@ router.post('/register', register);
 router.post('/logout', logout);
 router.get('/me', isAuthorized, getMe);
 
-
 router.get('/', (req, res) => {
     // console.log("Landing")
 

@@ -3,26 +3,28 @@ import SessionDetail from '../components/SessionDetail';
 import SessionForm from '../components/SessionForm';
 import { AuthContext } from '../context/authContext';
 import SessionList from '../pages/SessionList';
-
+const axios = require('axios');
 
 const Home = () => {
 
     const [sessions, setSessions] = useState(null);
     const [loading, setLoading] = useState(false);
-    // const user = useContext(AuthContext);
-    
-    useEffect(() => {
-        // Define the Method
-        const fetchSessions = async () => {
-            setLoading(true)
+    const { user } = useContext(AuthContext);
+
+    // Define the Method
+    const fetchSessions = async () => {
+        console.log('fetching sessions...')
+        console.log("User: ", user);
+        setLoading(true)
+        try {
             // query our backend for data
-            // const response = await fetch('/api/practice');
             const response = await fetch('/api/practice', {
-                // headers: {
-                //     'Authorization': `Bearer ${user.token}`
-                // }
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
             });
-            // console.log("Response: ", response)
+            console.log("Response: ", response)
             // parse the response data
             const data = await response.json();
             // Success or Error(?)
@@ -31,7 +33,12 @@ const Home = () => {
                 setSessions(data);
                 setLoading(false);
             }
+        } catch(error) {
+            console.log(error);
         }
+    }
+
+    useEffect(() => {
         // Invoke the Method
         fetchSessions()
         // -- Protected Routes -- //
@@ -49,13 +56,8 @@ const Home = () => {
         <div className='home-page'>
             <h1>Home Component</h1>
             <div>
-                <SessionForm />
-                <div className="sessions">
-                    {sessions && sessions.map((session) => (
-                        <SessionDetail key={session._id} session={session} />
-                    ))}
-                </div>
-                <SessionList />
+                <SessionForm me={user}/>
+                <SessionList me={user}/>
             </div>
         </div>
     )

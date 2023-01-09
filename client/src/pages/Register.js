@@ -83,7 +83,7 @@ const Register = () => {
                 <label htmlFor="pass">Enter Password</label>
                 <input type="password"
                     id="pass"
-                    name="pass"
+                    name="password"
                     value={password}
                     onChange={(evt) => setPassword(evt.target.value)}
                 />
