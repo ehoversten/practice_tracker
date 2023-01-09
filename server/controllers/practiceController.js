@@ -1,5 +1,6 @@
 // const Practice = require('../models');
 const Practice = require('../models/Practice');
+const User = require('../models/User');
 const mongoose = require('mongoose');
 // const express = require('express');
 
@@ -41,9 +42,13 @@ const getSingleSession = async (req, res) => {
 const createSession = async (req, res) => {
     const {title, duration, worked_on } = req.body;
     // console.log(title, duration, worked_on);
-
     try {
-        const session = await Practice.create({title, duration, worked_on});
+        const user = await User.findById(req.user.id);
+        console.log("User: ", user);
+        const userId = user._id;
+        console.log("User ID: ", userId.toString());
+
+        const session = await Practice.create({title, duration, worked_on, user});
         res.status(201).json(session)
     } catch(err) {
         res.status(400).json({error: err.message});

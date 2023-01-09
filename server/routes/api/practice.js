@@ -11,7 +11,7 @@ const {
 // -- Auth Middleware -- // 
 const isAuthorized = require('../../utils/auth');
 // -- Require authorization to query for ALL routes -- //
-// router.use(isAuthorized);
+router.use(isAuthorized);
 
 // -- All routes prefixed with '/api/practice'
 router.get('/', getAllSessions);
