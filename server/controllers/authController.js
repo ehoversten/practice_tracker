@@ -76,7 +76,7 @@ const getMe = async (req, res) => {
     
     try {
         let me = await User.findById(req.user.id);
-        console.log("I am : ", me);
+        // console.log("I am : ", me);
         
         res.status(200).json(me);
     } catch (err) {
@@ -93,7 +93,7 @@ const logout = async (req, res) => {
     console.log("Req.User : ", req.user);
 
     // Invalidate Token (?)
-    console.log("Log User Out...");
+    // console.log("Log User Out...");
 
     res.status(200).json({ message: "User Logged Out"})
 }

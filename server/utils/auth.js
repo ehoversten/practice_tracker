@@ -13,7 +13,7 @@ const isAuthorized = async (req, res, next) => {
     }
     // Seperate 'Bearer' from Token
     const token = authorization.split(' ')[1];
-    console.log("Token: ", token);
+    // console.log("Token: ", token);
     try {
         // validate token
         const {_id} = jwt.verify(token, process.env.SECRET);

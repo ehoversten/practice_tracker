@@ -1,14 +1,14 @@
-// const Practice = require('../models');
 const Practice = require('../models/Practice');
 const User = require('../models/User');
 const mongoose = require('mongoose');
-// const express = require('express');
 
 // get all practice sessions
 const getAllSessions = async (req, res) => {
 
     try {
-        let allSessions = await Practice.find({}).sort({ createdAt: -1 });
+        const user = await User.findById(req.user.id);
+
+        let allSessions = await Practice.find({user}).sort({ createdAt: -1 });
         res.status(200).json(allSessions);
     } catch(err) {
         res.status(400).json({ error: err.message });
@@ -44,9 +44,9 @@ const createSession = async (req, res) => {
     // console.log(title, duration, worked_on);
     try {
         const user = await User.findById(req.user.id);
-        console.log("User: ", user);
-        const userId = user._id;
-        console.log("User ID: ", userId.toString());
+        // console.log("User: ", user);
+        // const userId = user._id;
+        // console.log("User ID: ", userId.toString());
 
         const session = await Practice.create({title, duration, worked_on, user});
         res.status(201).json(session)
@@ -64,6 +64,10 @@ const updateSession = async (req, res) => {
     }
 
     try {
+        const user = await User.findById(req.user.id);
+        if(!user) {
+            res.status(401).json({ error: 'Not Valid User'});
+        }
         let session = await Practice.findOneAndUpdate({_id: id}, { ...req.body });
 
         if(!session) {
@@ -78,7 +82,7 @@ const updateSession = async (req, res) => {
 
 // delete a practice session
 const deleteSession = async (req, res) => {
-    // console.log(`ID: ${req.params.id}`);
+    console.log(`ID: ${req.params.id}`);
     const { id } = req.params;
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
