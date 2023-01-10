@@ -19,6 +19,7 @@ const Navbar = () => {
                 <h2>Practice Session Tracker</h2>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='about'>About</NavLink>
+                <NavLink to='sessions'>Sessions</NavLink>
                 { user && (
                     <div>
                         <h3>{user.email}</h3>
