@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SessionForm = ({ me }) => {
+const SessionForm = (props) => {
     // --> look into using Ref's for form input values
     const [title, setTitle] = useState('');
     const [duration, setDuration] = useState('');
@@ -25,26 +25,15 @@ const SessionForm = ({ me }) => {
         evt.preventDefault();
         console.log("submitted...");
 
-        const newSession = { title, duration, worked_on: workedOn }
+        const newSession = { 
+            title,
+            duration, 
+            worked_on: workedOn 
+        }
         console.log(newSession);
 
-        let response = await fetch('/api/practice', {
-            method: 'POST',
-            body: JSON.stringify(newSession),
-            headers: {
-                'Content-Type': 'application/json', 
-                'Authorization': `Bearer ${me.token}`
-            }
-        }); 
-
-        let json = await response.json();
-
-        // If we get a server ERROR
-        if(!response.ok) {
-            setError(json.error);
-        }
-        console.log("New Session Added");
-        // reset form inputs 
+        props.addSession(newSession);
+  
         setTitle('');
         setDuration('');
         setWorkedOn('');

@@ -5,9 +5,10 @@ import { AuthContext } from '../context/authContext';
 
 const Session = () => {
 
+    const { user } = useContext(AuthContext);
     const [sessions, setSessions] = useState(null);
     const [loading, setLoading] = useState(false);
-    const { user } = useContext(AuthContext);
+    const [error, setError] = useState(null);
 
     // Define the Method
     const fetchSessions = async () => {
@@ -36,6 +37,27 @@ const Session = () => {
         }
     }
 
+    const addSession = async (newSession) => {
+        console.log("Adding new session");
+        console.log("Sesh: ", newSession);
+
+        let response = await fetch('/api/practice', {
+            method: 'POST',
+            body: JSON.stringify(newSession),
+            headers: {
+                'Content-Type': 'application/json', 
+                'Authorization': `Bearer ${user.token}`
+            }
+        }); 
+
+        let json = await response.json();
+
+        // If we get a server ERROR
+        if(!response.ok) {
+            setError(json.error);
+        }
+    }
+
     useEffect(() => {
         // Invoke the Method
         fetchSessions()
@@ -53,7 +75,7 @@ const Session = () => {
     return (
         <div className='session-container'>
             <h1>Sessions View</h1>
-            <SessionForm setSessions={setSessions}/>
+            <SessionForm addSession={addSession}/>
             <SessionList sessions={sessions}/>
         </div>
     )
