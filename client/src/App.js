@@ -12,7 +12,6 @@ import NotFound from './pages/NotFound';
 
 
 function App() {
-
   // const user = useContext(AuthContext);
 
   return (

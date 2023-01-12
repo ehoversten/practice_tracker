@@ -1,16 +1,13 @@
 import { useEffect, useState } from 'react';
+import SessionItem from '../components/SessionItem';
 
-const SessionList = ({ sessions }) => {
+const SessionList = ({ sessions, removeSession }) => {
 
     return (
         <div className="session-list">
             <h1>Practice Session List</h1>
             {sessions && sessions.map((item) => (
-                <div key={item.id} className="session-item">
-                    <p>{item.title}</p>
-                    <p>{item.duration}</p>
-                    <p>{item.workedOn}</p>
-                </div>
+               <SessionItem key={item._id} item={item} removeSession={removeSession}/>
             ))}
         </div>
     )

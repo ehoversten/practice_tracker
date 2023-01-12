@@ -15,7 +15,7 @@ const About = () => {
     }
 
     useEffect(() => {
-        getUsers();
+        // getUsers();
     }, []);
 
 

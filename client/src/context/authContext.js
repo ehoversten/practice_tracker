@@ -31,11 +31,11 @@ export const AuthContextProvider = ({children}) => {
         console.log('Checking Local Storage...');
         const user = JSON.parse(localStorage.getItem('user'));
 
+        console.log('Auth Context State: ', user);
         if(user) {
             setUser(user);
             // dispatch({type: 'LOGIN', payload: currentUser});
         }
-        // console.log('Auth Context State: ', user);
     }, []);
 
 

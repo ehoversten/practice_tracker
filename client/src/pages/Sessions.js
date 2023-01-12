@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import SessionForm from '../components/SessionForm';
 import SessionList from './SessionList';
 import { AuthContext } from '../context/authContext';
@@ -6,6 +6,7 @@ import { AuthContext } from '../context/authContext';
 const Session = () => {
 
     const { user } = useContext(AuthContext);
+    const effectRan = useRef(false);
     const [sessions, setSessions] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -56,16 +57,47 @@ const Session = () => {
         if(!response.ok) {
             setError(json.error);
         }
+        // reload the "session" state
+        fetchSessions();
+    }
+
+    const removeSession = async (id) => {
+  
+        console.log(`ID to be removed ${id}`);
+        
+        let response = await fetch(`/api/practice/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${user.token}`
+            },
+        });
+
+        let data = await response.json();
+
+        if(!response.ok) {
+            setError(data.error);
+        }
+        fetchSessions();
     }
 
     useEffect(() => {
         // Invoke the Method
-        fetchSessions()
+        console.log("SESSSIONS COMPONENT MOUNTED");
+        if(effectRan.current === false) {
+            fetchSessions()
+        }
         // -- Protected Routes -- //
         // if(user) {
         //     console.log('Found User');
         //     fetchSessions();
         // }
+        
+        // Clean Up Function
+        return () => {
+            console.log("SESSIONS COMPONENT UNMOUNTED");
+            effectRan.current = true;
+        }
     }, []);
 
     if(loading) {
@@ -75,8 +107,8 @@ const Session = () => {
     return (
         <div className='session-container'>
             <h1>Sessions View</h1>
-            <SessionForm addSession={addSession}/>
-            <SessionList sessions={sessions}/>
+            <SessionForm addSession={addSession} />
+            <SessionList sessions={sessions} removeSession={removeSession}/>
         </div>
     )
 }
