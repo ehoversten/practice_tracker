@@ -63,33 +63,36 @@ const Register = () => {
     }
 
     return (
-        <div className="login-container">
+        <div className="register-container">
             <h1>Welcome, Register</h1>
-            <form action="">
-                <label htmlFor="username">Enter Username</label>
-                <input type="text"
-                    id="username"
-                    name="username"
-                    value={username}
-                    onChange={(evt) => setUsername(evt.target.value)}
-                />
-                <label htmlFor="email">Enter Email</label>
-                <input type="email"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(evt) => setEmail(evt.target.value)}
-                />
-                <label htmlFor="pass">Enter Password</label>
-                <input type="password"
-                    id="pass"
-                    name="password"
-                    value={password}
-                    onChange={(evt) => setPassword(evt.target.value)}
-                />
-                <button onClick={handleSubmit}>Submit</button>
-                {error && <div className="error">{error}</div>}
-            </form>
+            <div className="form-container">
+                <form action="">
+                    <label htmlFor="username">Enter Username</label>
+                    <input type="text"
+                        id="username"
+                        name="username"
+                        value={username}
+                        onChange={(evt) => setUsername(evt.target.value)}
+                    />
+                    <label htmlFor="email">Enter Email</label>
+                    <input type="email"
+                        id="email"
+                        name="email"
+                        value={email}
+                        onChange={(evt) => setEmail(evt.target.value)}
+                    />
+                    <label htmlFor="pass">Enter Password</label>
+                    <input type="password"
+                        id="pass"
+                        name="password"
+                        value={password}
+                        onChange={(evt) => setPassword(evt.target.value)}
+                    />
+                    <button onClick={handleSubmit}>Submit</button>
+                    {error && <div className="error">{error}</div>}
+                </form>
+
+            </div>
         </div>
     )
 }

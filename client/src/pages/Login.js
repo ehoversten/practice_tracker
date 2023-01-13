@@ -60,25 +60,29 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <h1>Welcome, Login</h1>
-            <form action="">
-                <label htmlFor="email">Enter Email</label>
-                <input type="email"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(evt) => setEmail(evt.target.value)}
-                />
-                <label htmlFor="pass">Enter Password</label>
-                <input type="password"
-                    id="pass"
-                    name="password"
-                    value={password}
-                    onChange={(evt) => setPassword(evt.target.value)}
-                />
-                <button onClick={handleSubmit}>Submit</button>
-                {error && <div className="error">{error}</div>}
-            </form>
+            <div className="title-container">
+                <h1>Welcome, Login</h1> 
+            </div>
+            <div className="form-container">
+                <form action="">
+                    <label htmlFor="email">Enter Email</label>
+                    <input type="email"
+                        id="email"
+                        name="email"
+                        value={email}
+                        onChange={(evt) => setEmail(evt.target.value)}
+                    />
+                    <label htmlFor="pass">Enter Password</label>
+                    <input type="password"
+                        id="pass"
+                        name="password"
+                        value={password}
+                        onChange={(evt) => setPassword(evt.target.value)}
+                    />
+                    <button onClick={handleSubmit}>Submit</button>
+                    {error && <div className="error">{error}</div>}
+                </form>
+            </div>
         </div>
     )
 }

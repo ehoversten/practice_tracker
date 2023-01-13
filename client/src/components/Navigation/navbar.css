@@ -8,6 +8,7 @@ Navy Blue color: #1E3D58;
 header {
     background-color: #43B0F1;
     color: #E8EEF1;
+    margin-bottom: 0;
   }
   
   nav {
@@ -52,11 +53,15 @@ header {
   
   @media screen and (max-width: 750px) {
     header {
-      margin-bottom: 1em;
+      /* margin-bottom: 1em; */
     }
   
     nav {
       flex-direction: column;
       padding-bottom: 1em;
+    }
+
+    .nav-links {
+      margin: 0;
     }
   }

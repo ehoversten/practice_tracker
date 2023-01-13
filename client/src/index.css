@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+.App {
+  background-color: #E8EEF1;
+  height: 100vh;
+}
+
+
+
 /* Colors
 White: color: #E8EEF1;
 Blue Grotto color: #43B0F1;
@@ -74,3 +81,59 @@ nav img {
     padding-bottom: 1em;
   }
 } */
+
+
+.home-page, .about-page {
+  height: 100vh;
+  background-color: #E8EEF1;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-container, .register-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 0.5em;
+  justify-items: center;
+  /* flex-direction: column; */
+  /* margin: 0 auto; */
+}
+
+.login-container h1, .register-container h1 {
+  margin-top: 0;
+  padding-top: 1em;
+}
+
+.form-container {
+  width: 50%;
+  min-width: 350px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  height: 2em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+form label {
+  padding: 10px 2px;
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+form button {
+  margin: 1em auto;
+  width: 50%;
+  height: 2.5em;
+  background-color: #057DCD;
+  border-radius: 10px;
+  color: #E8EEF1;
+  font-size: 1.25em;
+  font-weight: 600;
+}
