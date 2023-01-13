@@ -1,0 +1,62 @@
+/* Colors
+White: color: #E8EEF1;
+Blue Grotto color: #43B0F1;
+Royal Blue color: #057DCD;
+Navy Blue color: #1E3D58; 
+*/
+
+header {
+    background-color: #43B0F1;
+    color: #E8EEF1;
+  }
+  
+  nav {
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: space-around; */
+    align-items: center;
+  }
+  
+  nav h1 {
+    color: #1E3D58;
+    font-size: 2.0em;
+  }
+  
+  nav a {
+    color: #E8EEF1;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-right: 0.5em;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #1E3D58;
+    font-size: 1.25em;
+    margin-right: 0.5em;
+  }
+  
+  
+  .nav-links {
+    margin-right: 2em;
+    /* margin-top: 1em; */
+  }
+  
+  nav img {
+    height: 50px;
+    width: 50px;
+    padding: 0.5em 0.5em;
+  }
+  
+  
+  @media screen and (max-width: 750px) {
+    header {
+      margin-bottom: 1em;
+    }
+  
+    nav {
+      flex-direction: column;
+      padding-bottom: 1em;
+    }
+  }
