@@ -98,6 +98,7 @@ nav img {
   justify-items: center;
   /* flex-direction: column; */
   /* margin: 0 auto; */
+  padding: 1em 2em;
 }
 
 .login-container h1, .register-container h1 {
@@ -152,8 +153,38 @@ form button {
 }
 
 .session-item {
+  background-color: #43B0F1;
   border: 2px solid #057DCD;
   border-radius: 1em;
+  color: #E8EEF1;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 1em;
+  margin-bottom: 1em;
+
+  box-shadow: 0 8px 8px -4px lightblue;
+}
+
+.session-item:hover {
+  background-color: #1E3D58;
+}
+
+.item-detail p {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+.del-btn {
+  background-color: rgb(254 14 14 / 84%);
+  border-radius: 10px;
+  padding: 0.35em 0.55em;
+  /* height: 2.5em;
+  width: 2.5em; */
+
+  color: #E8EEF1;
+  font-size: 1em;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 700px) {
