@@ -106,7 +106,9 @@ const Session = () => {
 
     return (
         <div className='session-container'>
-            <h1>Sessions View</h1>
+            <div className="session-title">
+                <h1>Sessions View</h1>
+            </div>
             <SessionForm addSession={addSession} />
             <SessionList sessions={sessions} removeSession={removeSession}/>
         </div>

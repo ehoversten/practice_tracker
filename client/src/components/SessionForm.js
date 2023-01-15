@@ -11,7 +11,6 @@ const SessionForm = (props) => {
         title: '',
         duration: '',
         workedOn: '',
-        // worked_on: ''
     })
 
     const handleChange = (evt) => {
@@ -43,27 +42,32 @@ const SessionForm = (props) => {
     return (
         <div className="session-form">
             <h2>Add Session</h2>
-            <form>
-                <label htmlFor="title">Enter Title</label>
-                <input id="title" 
-                    type="text" 
-                    value={title}
-                    onChange={(evt) => setTitle(evt.target.value)}/>
+            <div className="form-container">
+                <form>
+                    <label htmlFor="title">Enter Title</label>
+                    <input id="title" 
+                        type="text" 
+                        value={title}
+                        onChange={(evt) => setTitle(evt.target.value)}/>
 
-                <label htmlFor="duration">Enter Duration</label>
-                <input id="duration" 
-                    type="text" 
-                    value={duration} 
-                    onChange={(evt) => setDuration(evt.target.value)}/>
+                    <label htmlFor="duration">Enter Duration</label>
+                    <input id="duration" 
+                        type="text" 
+                        value={duration} 
+                        onChange={(evt) => setDuration(evt.target.value)}/>
 
-                <label htmlFor="worked_on">Enter Topics Worked On</label>
-                <input id="worked_on" 
-                    type="text" 
-                    value={workedOn}  
-                    onChange={(evt) => setWorkedOn(evt.target.value)}/>
-                <button onClick={handleSubmit} type="submit">Submit</button>
-            </form>
-            {error && <div className='error'>{error}</div>}
+                    <label htmlFor="worked_on">Enter Topics Worked On</label>
+                    <input id="worked_on" 
+                        type="text" 
+                        value={workedOn}  
+                        onChange={(evt) => setWorkedOn(evt.target.value)}/>
+                    <button onClick={handleSubmit} type="submit">Submit</button>
+                </form>
+            </div>
+            <div className="error-container">
+                {error && <div className='error'>{error}</div>}
+            </div>
+            
         </div>
     )
 }

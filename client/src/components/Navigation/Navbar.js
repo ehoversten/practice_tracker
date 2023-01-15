@@ -25,9 +25,12 @@ const Navbar = () => {
                     <NavLink to='sessions'>Sessions</NavLink>
                     { user && (
                         <>
-                            <h3>{user.email}</h3>
-                            <div className="">
+                            {/* <div className="">
                                 <button className="logout-btn" onClick={handleClick}>Logout</button>
+                            </div> */}
+                            <NavLink to='logout' className="logout-btn" onClick={logout}> Logout </NavLink>
+                            <div className="user-info">
+                                <h4>Welcome {user.email}</h4>
                             </div>
                         </>
                     )}
