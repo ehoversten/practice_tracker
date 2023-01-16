@@ -5,6 +5,7 @@ const SessionDetail = ({ session }) => {
     // console.log(props);
     // destructure 'props' in the function definition
     // let { session } = props;
+    if(!session) return <></>;
 
     return (
         <div className="session-detail">

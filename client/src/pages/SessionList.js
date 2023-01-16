@@ -5,7 +5,9 @@ const SessionList = ({ sessions, removeSession }) => {
 
     return (
         <div className="session-list">
-            <h1>Practice Session List</h1>
+            <div className="session-title">
+                <h1>Practice Session List</h1>
+            </div>
             {sessions && sessions.map((item) => (
                <SessionItem key={item._id} item={item} removeSession={removeSession}/>
             ))}

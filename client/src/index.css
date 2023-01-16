@@ -96,9 +96,17 @@ nav img {
   grid-template-columns: 1fr;
   column-gap: 0.5em;
   justify-items: center;
+  align-items: center;
   /* flex-direction: column; */
   /* margin: 0 auto; */
-  padding: 1em 2em;
+  padding: 2em 2em;
+  width: 60%;
+  margin: 2em auto;
+
+  background-color: #057DCD;
+  background-color: #43B0F1;
+  border: 2px solid #1E3D58;
+  border-radius: 1em;
 }
 
 .login-container h1, .register-container h1 {
@@ -128,7 +136,7 @@ form label {
   font-weight: 500;
 }
 
-form button {
+form button, .show-btn {
   margin: 1em auto;
   width: 50%;
   height: 2.5em;
@@ -138,6 +146,11 @@ form button {
   font-size: 1.25em;
   font-weight: 600;
 }
+
+.cancel-btn {
+  background-color: rgba(249, 66, 66, 0.802);
+}
+
 
 .session-container {
   /* padding: 1em 2em; */
@@ -150,6 +163,13 @@ form button {
 
 .session-title h1 {
   /* margin: 0 auto; */
+}
+
+.session-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .session-item {
@@ -170,6 +190,11 @@ form button {
   background-color: #1E3D58;
 }
 
+.session-list {
+  border-right: 5px solid rgba(140, 140, 140, 0.718);
+  padding: 1em 1em;
+}
+
 .item-detail p {
   font-size: 1.25em;
   font-weight: 500;
@@ -188,6 +213,17 @@ form button {
 }
 
 @media screen and (max-width: 700px) {
+
+  .session-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .session-list {
+    border-top: 5px solid rgba(140, 140, 140, 0.718);
+    border-right: 0;
+  }
+
   .form-container {
     width: 100%;
   }

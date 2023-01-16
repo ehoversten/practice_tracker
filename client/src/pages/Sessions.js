@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, useRef } from 'react';
 import SessionForm from '../components/SessionForm';
 import SessionList from './SessionList';
 import { AuthContext } from '../context/authContext';
+import SessionDetail from '../components/SessionDetail';
 
 const Session = () => {
 
@@ -10,6 +11,13 @@ const Session = () => {
     const [sessions, setSessions] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const [showForm, setShowForm] = useState(false);
+    const [session, setSession] = useState({
+        // title: "test",
+        // duration: "XX min",
+        // worked_on: "testing bingo sequences"
+    })
 
     // Define the Method
     const fetchSessions = async () => {
@@ -58,6 +66,7 @@ const Session = () => {
             setError(json.error);
         }
         // reload the "session" state
+        setShowForm(false);
         fetchSessions();
     }
 
@@ -109,8 +118,16 @@ const Session = () => {
             <div className="session-title">
                 <h1>Sessions View</h1>
             </div>
-            <SessionForm addSession={addSession} />
-            <SessionList sessions={sessions} removeSession={removeSession}/>
+            { showForm ? 
+            <SessionForm addSession={addSession} setShowForm={setShowForm}/> : 
+            <button className="show-btn" onClick={() => setShowForm(true)}>Add Session</button>
+            }
+
+            {/* <SessionForm addSession={addSession} /> */}
+            <div className="session-info">
+                <SessionList sessions={sessions} removeSession={removeSession}/>
+                <SessionDetail session={session}/>
+            </div>
         </div>
     )
 }

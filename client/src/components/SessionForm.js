@@ -62,6 +62,7 @@ const SessionForm = (props) => {
                         value={workedOn}  
                         onChange={(evt) => setWorkedOn(evt.target.value)}/>
                     <button onClick={handleSubmit} type="submit">Submit</button>
+                    <button onClick={() => props.setShowForm(false)} className="cancel-btn">Cancel</button>
                 </form>
             </div>
             <div className="error-container">
