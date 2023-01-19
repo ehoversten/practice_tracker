@@ -3,6 +3,7 @@ import SessionForm from '../components/SessionForm';
 import SessionList from './SessionList';
 import { AuthContext } from '../context/authContext';
 import SessionDetail from '../components/SessionDetail';
+import { Navigate } from 'react-router-dom';
 
 const Session = () => {
 
@@ -108,6 +109,10 @@ const Session = () => {
             effectRan.current = true;
         }
     }, []);
+
+    if(!user) {
+        return <Navigate to="/login" />
+    }
 
     if(loading) {
         return (<div className='loading'> Loading ... </div>);
