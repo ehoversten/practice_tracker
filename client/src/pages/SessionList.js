@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import SessionItem from '../components/SessionItem';
 
-const SessionList = ({ sessions, removeSession }) => {
+const SessionList = ({ sessions, setSession, removeSession }) => {
 
     return (
         <div className="session-list">
@@ -9,7 +9,7 @@ const SessionList = ({ sessions, removeSession }) => {
                 <h1>Practice Session List</h1>
             </div>
             {sessions && sessions.map((item) => (
-               <SessionItem key={item._id} item={item} removeSession={removeSession}/>
+               <SessionItem key={item._id} item={item} setSession={setSession} removeSession={removeSession}/>
             ))}
         </div>
     )

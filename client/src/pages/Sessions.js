@@ -15,9 +15,9 @@ const Session = () => {
 
     const [showForm, setShowForm] = useState(false);
     const [session, setSession] = useState({
-        // title: "test",
-        // duration: "XX min",
-        // worked_on: "testing bingo sequences"
+        title: "",
+        duration: "",
+        worked_on: ""
     })
 
     // Define the Method
@@ -130,7 +130,7 @@ const Session = () => {
 
             {/* <SessionForm addSession={addSession} /> */}
             <div className="session-info">
-                <SessionList sessions={sessions} removeSession={removeSession}/>
+                <SessionList sessions={sessions} setSession={setSession} removeSession={removeSession}/>
                 <SessionDetail session={session}/>
             </div>
         </div>

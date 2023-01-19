@@ -1,9 +1,9 @@
 
-const SessionItem = ({ item, removeSession}) => {
+const SessionItem = ({ item, setSession, removeSession}) => {
 
     return (
         <div className="session-item">
-            <div className="item-detail">
+            <div className="item-detail" onClick={() => setSession(item)}>
                 <p>Title: {item.title}</p>
                 <p>Duration: {item.duration}</p>
                 <p>Notes: {item.worked_on}</p>
