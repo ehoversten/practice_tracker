@@ -1,8 +1,10 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const useLogout = () => {
+    const navigate = useNavigate();
     const { setUser } = useContext(AuthContext);
     // const { dispatch } = useAuthContext();
 
@@ -17,6 +19,7 @@ export const useLogout = () => {
         // update user state in context
         setUser(null);
         console.log("User Removed from Context");
+        // navigate("/");
     }
 
     return { logout }

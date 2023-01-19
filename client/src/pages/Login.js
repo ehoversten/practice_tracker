@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useLogin } from '../hooks/useLogin';
 import { AuthContext } from "../context/authContext";
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -8,7 +9,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-    const { setUser } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     // const { login, isLoading, error } = useLogin();
 
     const handleChange = (evt) => {
@@ -57,6 +58,8 @@ const Login = () => {
         }
 
     }
+
+    if(user) return <Navigate to="/sessions" />
 
     return (
         <div className="login-container">

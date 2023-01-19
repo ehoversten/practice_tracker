@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useSignup } from '../hooks/useSignup';
 import { AuthContext } from '../context/authContext';
+import { Navigate } from 'react-router-dom';
 
 const Register = () => {
 
@@ -61,6 +62,8 @@ const Register = () => {
             setError(null)
         }
     }
+
+    if(user) return <Navigate to="/sessions" />
 
     return (
         <div className="register-container">
