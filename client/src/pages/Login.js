@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useLogin } from '../hooks/useLogin';
 import { AuthContext } from "../context/authContext";
 import { Navigate } from 'react-router-dom';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Login = () => {
 
@@ -9,7 +10,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-    const { user, setUser } = useContext(AuthContext);
+    // const { user, setUser } = useContext(AuthContext);
+    const { user, setUser } = useAuthContext();
     // const { login, isLoading, error } = useLogin();
 
     const handleChange = (evt) => {

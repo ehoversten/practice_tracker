@@ -110,9 +110,9 @@ const Session = () => {
         }
     }, []);
 
-    if(!user) {
-        return <Navigate to="/login" />
-    }
+    // if(!user) {
+    //     return <Navigate to="/login" />
+    // }
 
     if(loading) {
         return (<div className='loading'> Loading ... </div>);
