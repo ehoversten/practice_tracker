@@ -7,6 +7,7 @@ import Select from 'react-select';
 const Gallery = () => {
 
     const [chordSet, setChordSet] = useState([]);
+    const [currentKey, setCurrentKey] = useState('C');
 
     const options = [
         { value: 'C', label: 'C' },
@@ -21,16 +22,16 @@ const Gallery = () => {
     useEffect(() => {
         // query for chords in the key of C major (default)
         
-        getChords('C');
+        getChords(currentKey);
         // update 'chordSet' state
-    }, []);
+    }, [currentKey]);
     
     const getChords = async (keySelect) => {
+        // setCurrentKey(keySelect)
         console.log(`Searching chords for key of ${keySelect}`)
         let response = await fetch(`/api/chords/key/${keySelect}`);
         let data = await response.json();
         setChordSet(data)
-
     }
 
     return (
@@ -40,11 +41,12 @@ const Gallery = () => {
                     <div className="key-content">
                         <h2>Chords in the Key of:</h2>
                     </div>
-                    <h1 id="key-name">C</h1>
+                    <h1 id="key-name">{currentKey}</h1>
                     <Select 
                         defaultValue={options[0]}
                         options={options}
-                        onChange={(choice) => getChords(choice.value)} 
+                        onChange={(choice) => setCurrentKey(choice.value)} 
+                        // onChange={(choice) => getChords(choice.value)} 
                     />
                 </div>
             </section>
