@@ -25,6 +25,7 @@ const Navbar = () => {
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='about'>About</NavLink>
                     <NavLink to='sessions'>Sessions</NavLink>
+                    <NavLink to='gallery'>Gallery</NavLink>
                     { user && (
                         <>
                             {/* <div className="">

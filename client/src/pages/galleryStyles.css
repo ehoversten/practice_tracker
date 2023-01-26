@@ -1,0 +1,108 @@
+*, 
+*::before,
+*::after {
+    box-sizing: border-box;
+} 
+
+body {
+    color: #6e6e6e;
+}
+
+.wrapper {
+    width: 100%;
+    align-content: center;
+    padding-top: 5.0em;
+    padding-bottom: 5.0em;
+
+    background-color: #e4eaf4;
+}
+
+.key-container {
+    text-align: center;
+}
+
+.key-container > h1 {
+    color: #6e6e6e;
+    font-size: 8.0rem;
+    margin: 0 auto;
+
+    text-decoration: underline;
+    text-decoration-color: #6e6e6e;
+    /* text-decoration-style: double; */
+    text-decoration-thickness: 0.05em;
+    text-underline-position: under;
+
+}
+
+.layout-container {
+    margin: 4.0em auto;
+    width: 80%;
+
+    
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title > h1 {
+    border: 2px solid rgb(110, 110, 110);
+    padding: 0.5em 0.5em;
+
+    /* border or no border (?) */
+    border-radius: 0.25em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+}
+
+.img-container {
+}
+
+.img-container > img {
+    max-width: 350px;  /*  350px - 450px */
+    border-radius: 3em;
+
+    /* debating if I prefer the flat look vs shadows */
+    /* box-shadow: 0.25em 0.25em 0.5em; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    background-color: lightslategray;
+    padding: 4.0em 0;
+
+    /* border or no border (?) */
+    border-radius: 3.0rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.item {
+    margin: 20px 20px;
+}
+
+/* .card {
+
+} */
+
+
+.card-content {
+    background-color: #6e6e6e;
+    color: #fff;
+
+    border: 2px solid #6e6e6e;
+    text-align: center;
+    
+    /* margin-top: 0.5em; */
+    
+    /* smaller container (?) */
+    max-width: 70%;
+    margin: 1.0em auto;
+    /* content in "pill" format  */
+    border-radius: 2.0em;
+
+}
