@@ -42,12 +42,14 @@ const Gallery = () => {
                         <h2>Chords in the Key of:</h2>
                     </div>
                     <h1 id="key-name">{currentKey}</h1>
-                    <Select 
-                        defaultValue={options[0]}
-                        options={options}
-                        onChange={(choice) => setCurrentKey(choice.value)} 
-                        // onChange={(choice) => getChords(choice.value)} 
-                    />
+                    <div className="select-container">
+                        <Select 
+                            defaultValue={options[0]}
+                            options={options}
+                            onChange={(choice) => setCurrentKey(choice.value)} 
+                            // onChange={(choice) => getChords(choice.value)} 
+                        />
+                    </div>
                 </div>
             </section>
 

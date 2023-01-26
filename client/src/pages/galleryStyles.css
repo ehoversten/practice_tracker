@@ -34,6 +34,11 @@ body {
 
 }
 
+.select-container {
+    margin: 1em auto;
+    width: 5em;
+}
+
 .layout-container {
     margin: 4.0em auto;
     width: 80%;
