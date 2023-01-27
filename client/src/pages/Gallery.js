@@ -53,7 +53,7 @@ const Gallery = () => {
                 </div>
             </section>
 
-            <main>
+            {/* <main> */}
                 <div className="layout-container">
                     <div className="title">
                         <h1>GALLERY TITLE</h1>
@@ -66,7 +66,7 @@ const Gallery = () => {
                     </div>
                     }
                 </div>
-            </main>
+            {/* </main> */}
         </div>
     )
 }
