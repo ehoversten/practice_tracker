@@ -11,6 +11,7 @@ import Sessions from './pages/Sessions';
 import Gallery from './pages/Gallery';
 import NotFound from './pages/NotFound';
 import RequireAuth from './components/RequireAuth';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 
           <Route path='*' element={<NotFound />}/>
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
