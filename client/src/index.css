@@ -84,7 +84,7 @@ nav img {
 
 
 .home-page, .about-page {
-  height: 80vh;
+  height: 100vh;
   background-color: #E8EEF1;
   margin-top: 0px;
   display: flex;

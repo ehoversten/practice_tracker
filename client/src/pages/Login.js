@@ -69,6 +69,7 @@ const Login = () => {
             initial={{ x: '-100vw' }}
             animate={{ x: 0 }}
             transition={{ delay: 0.0, duration: 0.5 }}
+            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }, ease: 'easeOut' }}
             className="login-container"
         >
             <div className="title-container">

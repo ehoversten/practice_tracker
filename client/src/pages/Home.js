@@ -12,21 +12,20 @@ const Home = () => {
     }, []);
 
     return (
-        <div className='home-page'>
-            <motion.div
-                initial={{ x: '-100vw' }}
-                animate={{ x: 0 }}
-                transition={{ delay: 0.0, duration: 0.5 }}
-                exit={{ x: '-100vw' }}
-            >
+        <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: '100%' }}
+            transition={{ delay: 0.0, duration: 0.5 }}
+            exit={{ x: window.innerWidth, transition:{ delay: 0.5 }, ease: 'easeOut' }}
+            className='home-page'
+        >
 
-                <h1>Home Component</h1>
-                <div>
-        
-                </div>
+            <h1>Home Component</h1>
+            <div>
+    
+            </div>
 
-            </motion.div>
-        </div>
+        </motion.div>
     )
 }
 

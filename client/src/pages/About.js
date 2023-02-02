@@ -25,10 +25,10 @@ const About = () => {
 
     return (
         <motion.div 
-            initial={{ x: '-100vw' }}
-            animate={{ x: 0 }}
+            initial={{ width: 0 }}
+            animate={{ width: '100%' }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            exit={{ x: '-100vw' }}
+            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }, ease: 'easeOut'  }}
             className='about-page'
             >
             <h1>About Component</h1>

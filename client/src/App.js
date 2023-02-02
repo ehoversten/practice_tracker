@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 import RequireAuth from './components/RequireAuth';
 import Footer from './components/Footer/Footer';
 import { AnimatePresence } from 'framer-motion';
+import AnimatedRoutes from './components/AnimatedRoutes';
 
 
 function App() {
@@ -23,8 +24,8 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <div className="App">
-        <AnimatePresence>
-          <Routes>
+        <AnimatedRoutes  />
+          {/* <Routes>
             <Route path='/' element={<Home />} />
             <Route path='about' element={<About />} />
             <Route path='register' element={<Register />} />
@@ -33,13 +34,12 @@ function App() {
             <Route element={<RequireAuth />} >
               <Route path='sessions' element={<Sessions />} />
               <Route path='gallery' element={<Gallery />} />
-              {/* <Route path='/' element={user ? <Home /> : <Navigate to='/login'/>} /> */}
+              <Route path='/' element={user ? <Home /> : <Navigate to='/login'/>} />
             </Route>
 
 
             <Route path='*' element={<NotFound />}/>
-          </Routes>
-        </AnimatePresence>
+          </Routes> */}
         <Footer />
       </div>
     </BrowserRouter>

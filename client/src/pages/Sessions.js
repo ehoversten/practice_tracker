@@ -123,6 +123,7 @@ const Session = () => {
             initial={{ x: '-100vw' }}
             animate={{ x: 0 }}
             transition={{ delay: 0.0, duration: 0.5 }}
+            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }}}
             className='session-container'
         >
             <div className="session-title">
