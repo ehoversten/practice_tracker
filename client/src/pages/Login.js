@@ -3,6 +3,7 @@ import { useLogin } from '../hooks/useLogin';
 import { AuthContext } from "../context/authContext";
 import { Navigate } from 'react-router-dom';
 import { useAuthContext } from "../hooks/useAuthContext";
+import { motion } from 'framer-motion';
 
 const Login = () => {
 
@@ -64,7 +65,12 @@ const Login = () => {
     if(user) return <Navigate to="/sessions" />
 
     return (
-        <div className="login-container">
+        <motion.div 
+            initial={{ x: '-100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.0, duration: 0.5 }}
+            className="login-container"
+        >
             <div className="title-container">
                 <h1>Welcome, Login</h1> 
             </div>
@@ -88,7 +94,7 @@ const Login = () => {
                     {error && <div className="error">{error}</div>}
                 </form>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

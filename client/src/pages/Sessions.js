@@ -3,7 +3,7 @@ import SessionForm from '../components/SessionForm';
 import SessionList from './SessionList';
 import { AuthContext } from '../context/authContext';
 import SessionDetail from '../components/SessionDetail';
-import { Navigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Session = () => {
 
@@ -119,13 +119,19 @@ const Session = () => {
     }
 
     return (
-        <div className='session-container'>
+        <motion.div
+            initial={{ x: '-100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.0, duration: 0.5 }}
+            className='session-container'
+        >
             <div className="session-title">
                 <h1>Sessions View</h1>
             </div>
+
             { showForm ? 
-            <SessionForm addSession={addSession} setShowForm={setShowForm}/> : 
-            <button className="show-btn" onClick={() => setShowForm(true)}>Add Session</button>
+                <SessionForm addSession={addSession} setShowForm={setShowForm}/> : 
+                <button className="show-btn" onClick={() => setShowForm(true)}>Add Session</button>
             }
 
             {/* <SessionForm addSession={addSession} /> */}
@@ -133,7 +139,7 @@ const Session = () => {
                 <SessionList sessions={sessions} setSession={setSession} removeSession={removeSession}/>
                 <SessionDetail session={session}/>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

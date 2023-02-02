@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { motion } from 'framer-motion';
 
 const About = () => {
     const [test, setTest] = useState(null);
@@ -24,7 +24,13 @@ const About = () => {
     }
 
     return (
-        <div className='about-page'>
+        <motion.div 
+            initial={{ x: '-100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            exit={{ x: '-100vw' }}
+            className='about-page'
+            >
             <h1>About Component</h1>
             {test && (
                 <div>
@@ -34,7 +40,7 @@ const About = () => {
                             </ul>))}
                 </div>
             )}
-        </div>
+        </motion.div>
     )
 }
 

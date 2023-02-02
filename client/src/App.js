@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navigation/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -12,30 +12,34 @@ import Gallery from './pages/Gallery';
 import NotFound from './pages/NotFound';
 import RequireAuth from './components/RequireAuth';
 import Footer from './components/Footer/Footer';
+import { AnimatePresence } from 'framer-motion';
 
 
 function App() {
   // const user = useContext(AuthContext);
+  // const location = useLocation();
 
   return (
     <BrowserRouter>
       <Navbar />
       <div className="App">
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='about' element={<About />} />
-          <Route path='register' element={<Register />} />
-          <Route path='login' element={ <Login />}/>
+        <AnimatePresence>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='register' element={<Register />} />
+            <Route path='login' element={ <Login />}/>
 
-          <Route element={<RequireAuth />} >
-            <Route path='sessions' element={<Sessions />} />
-            <Route path='gallery' element={<Gallery />} />
-            {/* <Route path='/' element={user ? <Home /> : <Navigate to='/login'/>} /> */}
-          </Route>
+            <Route element={<RequireAuth />} >
+              <Route path='sessions' element={<Sessions />} />
+              <Route path='gallery' element={<Gallery />} />
+              {/* <Route path='/' element={user ? <Home /> : <Navigate to='/login'/>} /> */}
+            </Route>
 
 
-          <Route path='*' element={<NotFound />}/>
-        </Routes>
+            <Route path='*' element={<NotFound />}/>
+          </Routes>
+        </AnimatePresence>
         <Footer />
       </div>
     </BrowserRouter>

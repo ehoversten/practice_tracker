@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { motion } from 'framer-motion';
 
 const Home = () => {
 
@@ -12,10 +13,19 @@ const Home = () => {
 
     return (
         <div className='home-page'>
-            <h1>Home Component</h1>
-            <div>
-      
-            </div>
+            <motion.div
+                initial={{ x: '-100vw' }}
+                animate={{ x: 0 }}
+                transition={{ delay: 0.0, duration: 0.5 }}
+                exit={{ x: '-100vw' }}
+            >
+
+                <h1>Home Component</h1>
+                <div>
+        
+                </div>
+
+            </motion.div>
         </div>
     )
 }

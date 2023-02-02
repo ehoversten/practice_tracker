@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import GalleryCard from '../components/GalleryCard';
+import { motion } from 'framer-motion';
 import "./galleryStyles.css"
 
 import Select from 'react-select';
@@ -35,7 +36,13 @@ const Gallery = () => {
     }
 
     return (
-        <div className="gallery-container">
+        <motion.div 
+            initial={{ x: '-100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.0, duration: 0.5 }}
+            exit={{ x: '-100vw' }}
+            className="gallery-container"
+        >
             <section className="chord-key">
                 <div className="key-container">
                     <div className="key-content">
@@ -67,7 +74,7 @@ const Gallery = () => {
                     }
                 </div>
             {/* </main> */}
-        </div>
+        </motion.div>
     )
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useSignup } from '../hooks/useSignup';
 import { AuthContext } from '../context/authContext';
 import { Navigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Register = () => {
 
@@ -66,7 +67,12 @@ const Register = () => {
     if(user) return <Navigate to="/sessions" />
 
     return (
-        <div className="register-container">
+        <motion.div 
+            initial={{ x: '-100vw' }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.0, duration: 0.5 }}
+            className="register-container"
+        >
             <h1>Welcome, Register</h1>
             <div className="form-container">
                 <form action="">
@@ -96,7 +102,7 @@ const Register = () => {
                 </form>
 
             </div>
-        </div>
+        </motion.div>
     )
 }
 
