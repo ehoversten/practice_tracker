@@ -66,10 +66,10 @@ const Login = () => {
 
     return (
         <motion.div 
-            initial={{ x: '-100vw' }}
-            animate={{ x: 0 }}
-            transition={{ delay: 0.0, duration: 0.5 }}
-            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }, ease: 'easeOut' }}
+        initial={{ width: 0 }}
+        animate={{ width: '100%' }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        exit={{ x: window.innerWidth, transition:{ duration: 0.5 }, ease: 'easeInOut'  }}
             className="login-container"
         >
             <div className="title-container">

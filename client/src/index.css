@@ -191,7 +191,7 @@ form button, .show-btn {
 }
 
 .session-list {
-  border-right: 5px solid rgba(140, 140, 140, 0.718);
+  /* border-right: 5px solid rgba(140, 140, 140, 0.718); */
   padding: 1em 1em;
 }
 

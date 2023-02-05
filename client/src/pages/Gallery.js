@@ -39,8 +39,8 @@ const Gallery = () => {
         <motion.div 
             initial={{ width: 0 }}
             animate={{ width: '100%' }}
-            transition={{ delay: 0.0, duration: 0.5 }}
-            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }, ease: 'easeOut' }}
+            transition={{ duration: 0.5 }}
+            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }, ease: 'easeInOut' }}
             className="gallery-container"
         >
             <section className="chord-key">

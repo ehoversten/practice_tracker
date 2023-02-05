@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useLogout } from '../../hooks/useLogout';
 import { AuthContext } from '../../context/authContext';
+import Timer from '../Timer';
 import ('./navbar.css');
 
 
@@ -43,6 +44,7 @@ const Navbar = () => {
                             <NavLink to='login'>Login</NavLink>
                         </>
                     )}
+                    <Timer />
                 </div>
             </nav>
         </header>

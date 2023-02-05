@@ -120,10 +120,10 @@ const Session = () => {
 
     return (
         <motion.div
-            initial={{ x: '-100vw' }}
-            animate={{ x: 0 }}
-            transition={{ delay: 0.0, duration: 0.5 }}
-            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }}}
+            initial={{ width: 0 }}
+            animate={{ width: '100%' }}
+            transition={{ duration: 0.5 }}
+            exit={{ x: window.innerWidth, transition:{ duration: 0.5 }, ease: 'easeInOut'  }}
             className='session-container'
         >
             <div className="session-title">
@@ -138,7 +138,7 @@ const Session = () => {
             {/* <SessionForm addSession={addSession} /> */}
             <div className="session-info">
                 <SessionList sessions={sessions} setSession={setSession} removeSession={removeSession}/>
-                <SessionDetail session={session}/>
+                {/* <SessionDetail session={session}/> */}
             </div>
         </motion.div>
     )

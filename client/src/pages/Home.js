@@ -13,13 +13,13 @@ const Home = () => {
 
     return (
         <motion.div
-            initial={{ width: 0 }}
+            key="home-page"
+            initial={{ x: 0 }}
             animate={{ width: '100%' }}
-            transition={{ delay: 0.0, duration: 0.5 }}
-            exit={{ x: window.innerWidth, transition:{ delay: 0.5 }, ease: 'easeOut' }}
+            transition={{ duration: 0.5 }}
+            exit={{ x: window.innerWidth, transition:{ delay: 0.5 }, ease: 'easeInOut' }}
             className='home-page'
         >
-
             <h1>Home Component</h1>
             <div>
     
