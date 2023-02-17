@@ -16,32 +16,32 @@ const Timer = () => {
     useEffect(() => {
         let interval = null;
         
-        // update Hours
-        if(minutes == 60) {
-            console.log("increment hours")
-            setHours(prev => prev + 1);
-            setMinutes(0);
-        }
-        // update Minutes
-        if(seconds == 60) {
-            console.log("increment minutes")
-            setMinutes(prev => prev + 1);
-            setSeconds(0);
-        }
-
+        
         if(isActive && isPaused === false) {
             interval = setInterval(() => {
                 
-                const secondCounter = time % 60;
-                const minuteCounter = Math.floor(time / 60);
+                // update Hours
+                if(minutes == 60) {
+                    console.log("increment hours")
+                    setHours(prev => prev + 1);
+                    setMinutes(0);
+                }
+                // update Minutes
+                if(seconds == 60) {
+                    console.log("increment minutes")
+                    setMinutes(prev => prev + 1);
+                    setSeconds(0);
+                }
+                // const secondCounter = time % 60;
+                // const minuteCounter = Math.floor(time / 60);
                 
-                console.log(secondCounter);
+                // console.log(secondCounter);
                 
-                const computedSecond = String(secondCounter).length === 1 ? `0${secondCounter}`: secondCounter;
-                const computedMinute = String(minuteCounter).length === 1 ? `0${minuteCounter}`: minuteCounter;
+                // const computedSecond = String(secondCounter).length === 1 ? `0${secondCounter}`: secondCounter;
+                // const computedMinute = String(minuteCounter).length === 1 ? `0${minuteCounter}`: minuteCounter;
                 
-                setSeconds(computedSecond);
-                setMinutes(computedMinute);
+                // setSeconds(computedSecond);
+                // setMinutes(computedMinute);
                 
                 setTime((prev) => prev + 1)
 

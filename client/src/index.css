@@ -14,7 +14,7 @@ code {
 
 .App {
   /* background-color: #E8EEF1; */
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 
@@ -82,14 +82,21 @@ nav img {
   }
 } */
 
+/* ----  HOME COMPONENT STYLES ----- */
 
 .home-page, .about-page {
-  height: 100vh;
+  height: 60vh;
   background-color: #E8EEF1;
   margin-top: 0px;
   display: flex;
   justify-content: center;
 }
+
+/* ----  ABOUT COMPONENT STYLES ----- */
+
+
+
+/* ----  LOGIN / REGISTER COMPONENT STYLES ----- */
 
 .login-container, .register-container {
   display: grid;
@@ -108,6 +115,7 @@ nav img {
   border: 2px solid #1E3D58;
   border-radius: 1em;
 }
+
 
 .login-container h1, .register-container h1, .gallery-container h1 {
   /* margin-top: 0; */
@@ -151,6 +159,7 @@ form button, .show-btn {
   background-color: rgba(249, 66, 66, 0.802);
 }
 
+/* ----  SESSION COMPONENT STYLES ----- */
 
 .session-container {
   /* padding: 1em 2em; */
@@ -159,6 +168,8 @@ form button, .show-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  min-height: 70vh;
 }
 
 .session-title h1 {
@@ -193,6 +204,7 @@ form button, .show-btn {
 .session-list {
   /* border-right: 5px solid rgba(140, 140, 140, 0.718); */
   padding: 1em 1em;
+  width: 80%;
 }
 
 .item-detail p {
