@@ -1,5 +1,5 @@
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, LayoutGroup } from 'framer-motion';
 import { useState } from 'react';
 
 const SessionItem = ({ item, setSession, removeSession}) => {
@@ -25,20 +25,23 @@ const SessionItem = ({ item, setSession, removeSession}) => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
             whileHover={{ scale: 1.1 }}
+            onHoverStart={() => setIsOpen(!isOpen)}
+            onHoverEnd={() => setIsOpen(!isOpen)}
+            style={{ height: isOpen ? "175px" : "100px" }}
             onClick={() => setIsOpen(!isOpen)} 
             className="session-item">
             <div className="item-header">
                 <h4>Note: {item.title}</h4>
             </div>
             { isOpen && (
-                <AnimatePresence>
-                    <motion.div 
+                <LayoutGroup>
+                    <motion.div
                         className="item-detail" 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         whileInView={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1 }}
+                        // exit={{ x: 500, opacity: 0 }}
+                        // transition={{ duration: 1 }}
                         onClick={() => setSession(item)}>
                         <p>Title: {item.title}</p>
                         <p>Duration: {item.duration}</p>
@@ -46,6 +49,7 @@ const SessionItem = ({ item, setSession, removeSession}) => {
                     </motion.div>
                     <motion.div 
                         initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         whileInView={{ opacity: 1 }}
                         className="del-btn-container">
                         <motion.button 
@@ -54,7 +58,7 @@ const SessionItem = ({ item, setSession, removeSession}) => {
                             className="del-btn" 
                             onClick={() => removeSession(item._id)}> X </motion.button>
                     </motion.div>
-                </AnimatePresence>
+                </LayoutGroup>
             )}
         </motion.div>
     )
