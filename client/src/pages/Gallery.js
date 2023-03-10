@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import GalleryCard from '../components/GalleryCard';
 import { motion } from 'framer-motion';
+import keySignature from '../datasets/Keys';
+import { chordsInKey, c_scale } from '../datasets/Chords'
 import "./galleryStyles.css"
 
 import Select from 'react-select';
@@ -10,13 +12,38 @@ const Gallery = () => {
     const [chordSet, setChordSet] = useState([]);
     const [currentKey, setCurrentKey] = useState('C');
 
-    const options = [
+    const options2 = [
         { value: 'C', label: 'C' },
+        { value: 'C# / Db', label: 'C#/Db' },
         { value: 'D', label: 'D' },
+        { value: 'D# / Eb', label: 'D#/Eb' },
         { value: 'E', label: 'E' },
         { value: 'F', label: 'F' },
+        { value: 'F# / Gb', label: 'F#/Db' },
         { value: 'G', label: 'G' },
+        { value: 'G# / Ab', label: 'G#/Ab' },
         { value: 'A', label: 'A' },
+        { value: 'A# / Bb', label: 'A#/Bb' },
+        { value: 'B', label: 'B' },
+    ]
+
+    const options = [
+        { value: 'C', label: 'C' },
+        { value: 'C#', label: 'C#' },
+        { value: 'Db', label: 'Db' },
+        { value: 'D', label: 'D' },
+        { value: 'D#', label: 'D#' },
+        { value: 'Eb', label: 'Eb' },
+        { value: 'E', label: 'E' },
+        { value: 'F', label: 'F' },
+        { value: 'F#', label: 'F#' },
+        { value: 'Gb', label: 'Gb' },
+        { value: 'G', label: 'G' },
+        { value: 'G#', label: 'G#' },
+        { value: 'Ab', label: 'Ab' },
+        { value: 'A', label: 'A' },
+        { value: 'A#', label: 'A#' },
+        { value: 'Bb', label: 'Bb' },
         { value: 'B', label: 'B' },
     ]
 
@@ -30,9 +57,23 @@ const Gallery = () => {
     const getChords = async (keySelect) => {
         // setCurrentKey(keySelect)
         console.log(`Searching chords for key of ${keySelect}`)
+
+        /*  TO DO...
         let response = await fetch(`/api/chords/key/${keySelect}`);
         let data = await response.json();
-        setChordSet(data)
+        */
+
+        // -- TEMP LOGIC -- //
+        let keyToFind = [];
+        chordsInKey.map(item => { 
+            // console.log("Item: ", item)
+            // console.log("KeyItem: ", item.key[0])
+            if(item.key[0] == keySelect.toLowerCase()) {
+                keyToFind.push(item);
+            };
+        })
+        console.log("Found: ", keyToFind);
+        setChordSet(keyToFind[0].chordsInKey)
     }
 
     return (

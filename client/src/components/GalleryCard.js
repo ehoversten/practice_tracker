@@ -1,6 +1,6 @@
 import "../pages/galleryStyles.css";
 
-const GalleryCard = () => {
+const GalleryCard = ({ chord, index }) => {
 
     return (
         <>
@@ -10,7 +10,7 @@ const GalleryCard = () => {
                         <img src="./assets/img/c7.png" alt="chord diagram" />
                     </div>
                     <div className="card-content">
-                        <h3>ITEM TEXT</h3>
+                        <h3>{chord}</h3>
                     </div>
                 </div>
             </div>
