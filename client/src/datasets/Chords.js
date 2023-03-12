@@ -1,5 +1,10 @@
 // -- Developing Data Sets -- //
 
+// import cmaj from './images/Chordbook/C_major.svg';
+// import cmaj1 from './images/Chordbook/C_major_v1.svg';
+// import cmin from './images/Chordbook/C_minor.svg';
+// import cmin1 from './images/Chordbook/C_minor_v1.svg';
+
 const chordsInKey = [
     {
         key: "c_major",
@@ -10,7 +15,8 @@ const chordsInKey = [
         chordsInKey: ["Cmaj", "Dmin", "Emin", "Fmaj", "Gmaj", "Amin", "Bdim"],
         chordsInKey_short: ["C", "Dm", "Em", "F", "G", "Am", "B°"],
         romanValue: ["I", "ii", "iii", "IV", "V", "vi", "vii°"],
-        relative_key: "a_minor"
+        relative_key: "a_minor",
+        // images: [cmaj, cmaj1, cmin, cmin1]
     },
     {
         key: "a_minor",

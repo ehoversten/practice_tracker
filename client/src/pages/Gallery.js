@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import GalleryCard from '../components/GalleryCard';
 import { motion } from 'framer-motion';
 import keySignature from '../datasets/Keys';
-import { chordsInKey, c_scale } from '../datasets/Chords'
+import { chordsInKey, c_scale } from '../datasets/Chords';
 import "./galleryStyles.css"
 
 import Select from 'react-select';
@@ -108,8 +108,8 @@ const Gallery = () => {
                     </div>
                     {chordSet && 
                     <div className="item-container">
-                        {chordSet.map((data) => (
-                            <GalleryCard chord={data}/>
+                        {chordSet.map((data, index) => (
+                            <GalleryCard chord={data} key={index}/>
                         ))} 
                     </div>
                     }
